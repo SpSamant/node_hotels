@@ -25,10 +25,12 @@ const express = require('express');
 const db = require('./db')
 const app = express();
 const bodyParser = require('body-parser');
+require('dotenv').config();
 app.use(bodyParser.json());  //req.body
 // const Person = require('./models/Person');
 // const MenuItem = require('./models/MenuItem');
 const Task = require('./models/Task')
+const PORT = process.env.PORT || 3000;
 app.get('/',(req,res)=>{res.send("Welcome to my hotel! How can I help you");
 })
 
@@ -98,7 +100,8 @@ const personRoutes = require('./routes/personRoutes');
 app.use('/person',personRoutes);
 const menuItemRoutes = require('./routes/menuRoutes');
 app.use('/menu',menuItemRoutes);
-app.listen(3000,()=>{console.log("listenting on port 3000");
+
+app.listen(PORT,()=>{console.log("listenting on port 3000");
 })
 
 
